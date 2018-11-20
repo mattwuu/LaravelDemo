@@ -1,5 +1,4 @@
-<?php
-
-return [
-    'name' => '文章系统'
-];
+<?php return array (
+  'name' => '文章系统',
+  'template' => 'mxw',
+);

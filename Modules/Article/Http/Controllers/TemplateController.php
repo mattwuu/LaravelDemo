@@ -15,4 +15,9 @@ class TemplateController extends Controller
         return view('article::template.index', compact('templates'));
     }
 
+    public function setDefaultTemplate($name)
+    {
+        \HDModule::saveConfig(['template'=>$name], 'config');
+        return back()->with('success', '模板设置成功');
+    }
 }
