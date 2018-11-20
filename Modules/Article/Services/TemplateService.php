@@ -34,7 +34,7 @@ class TemplateService
             if(is_object($config)){
                 $config = (array)$config;
                 $name = basename($dir);
-                $config['preview'] = url('template/'.$name.'/'.$config['preview']);
+                $config['preview'] = url('templates/'.$name.'/'.$config['preview']);
                 $config['name'] = $name;
                 return $config;
             }
