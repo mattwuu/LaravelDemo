@@ -18,5 +18,6 @@ Route::group(['middleware' => ['web', 'auth:admin'], 'prefix' => 'admin', 'names
 Route::group(['middleware' => ['web', 'auth:admin'], 'prefix' => 'admin', 'namespace' => "Modules\Admin\Http\Controllers"],
     function () {
         Route::get('module_update_cache', 'ModuleController@updateCache');
+        Route::get('module_set_default/{module}', 'ModuleController@setDefault');
         Route::resource('module', 'ModuleController')->middleware('permission:admin,resource');
     });

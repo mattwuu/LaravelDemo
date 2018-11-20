@@ -16,6 +16,7 @@ class ModuleService
 {
     public function updateCache(): bool
     {
+        \DB::table('modules')->truncate();
         $modules = HDModule::getModulesLists();
         foreach ($modules as $module) {
             $data = [

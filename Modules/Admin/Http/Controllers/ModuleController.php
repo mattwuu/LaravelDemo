@@ -10,15 +10,22 @@ use Modules\Admin\Services\ModuleService;
 class ModuleController extends Controller
 {
     //显示列表
-    public function index()
+    public function index(Module $module)
     {
-        $data = Module::paginate(10);
+        $data = $module::get();
         return view('admin::module.index', compact('data'));
     }
 
     public function updateCache(ModuleService $moduleService)
     {
         $moduleService->updateCache();
+        return back()->with('success', '模块缓存更新成功');
+    }
+
+    public function setDefault(Module $module)
+    {
+        $module->setDefault();
+        return back()->with('success', '设置成功');
     }
 
     //创建视图
