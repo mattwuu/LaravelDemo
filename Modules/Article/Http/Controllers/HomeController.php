@@ -5,69 +5,35 @@ namespace Modules\Article\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\View\FileViewFinder;
+use View;
+use App;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $paths = [public_path('templates/default')];
+        View::setFinder(new FileViewFinder(App::make('files'), $paths));
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-          dump('article');
 //        return view('article::index');
+        return view('index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
+    public function lists()
     {
-        return view('article::create');
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function content()
     {
-    }
-
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-        return view('article::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('article::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
+        
     }
 }
