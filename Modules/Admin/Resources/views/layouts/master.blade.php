@@ -190,7 +190,7 @@
             </div>
             <!--pjax加载动画 结束-->
             <div id="app">
-                @include('layouts._validate')
+                {{--@include('layouts._validate')--}}
                 @include('layouts._message')
                 @yield('content')
             </div>
