@@ -12,8 +12,10 @@
 */
 
 
-Route::get('/', function () {
-    return app()->build(\Modules\Admin\Http\Controllers\HomeController::class)->index();
+Route::get('/', function (\Modules\Admin\Entities\Module $module) {
+    $module = $module->getDefaultModule();
+    $class = '\Modules\\'.$module['name'].'\Http\Controllers\HomeController';
+    return app()->build($class)->index();
 });
 
 Auth::routes();
