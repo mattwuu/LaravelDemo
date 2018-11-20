@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Admin\Entities\Module;
 use Modules\Admin\Http\Requests\ModuleRequest;
+use Modules\Admin\Services\ModuleService;
+
 class ModuleController extends Controller
 {
     //显示列表
@@ -14,9 +16,9 @@ class ModuleController extends Controller
         return view('admin::module.index', compact('data'));
     }
 
-    public function updateCache()
+    public function updateCache(ModuleService $moduleService)
     {
-        dd(33);
+        $moduleService->updateCache();
     }
 
     //创建视图
