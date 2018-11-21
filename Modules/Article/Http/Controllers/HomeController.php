@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\View\FileViewFinder;
+use Modules\Article\Entities\Category;
 use View;
 use App;
 
@@ -28,9 +29,9 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function lists()
+    public function lists(Category $category)
     {
-        
+        dd($category->toArray());
     }
 
     public function content()

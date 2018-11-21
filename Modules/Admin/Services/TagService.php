@@ -9,7 +9,6 @@
 namespace Modules\Admin\Services;
 
 use Blade;
-use Modules\Article\Entities\Slide;
 
 class TagService
 {
@@ -17,8 +16,32 @@ class TagService
     public function make()
     {
         $this->slide();
+        $this->category();
     }
 
+    // 栏目标签
+    public function category()
+    {
+        Blade::directive('category', function ($expression) {
+            $expression = $expression ?: '[]';
+            $php
+              = <<<php
+<?php
+    \$params = $expression;
+    \$data = \Modules\Article\Entities\Category::get()->toArray();
+    \$data = \houdunwang\arr\Arr::channelList(\$data, 0, "&nbsp;", 'id');
+    foreach(\$data as \$field):
+    \$field['url'] = '/article/lists/'.\$field['id'].'.html';
+?>    
+php;
+            return $php;
+        });
+        Blade::directive('endCategory', function ($expression) {
+            return "<?php endforeach;?>";
+        });
+    }
+
+    // 幻灯片标签
     public function slide()
     {
         Blade::directive('slide', function ($expression) {
