@@ -4,6 +4,7 @@ namespace Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Admin\Services\TagService;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        (new TagService())->make();
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
