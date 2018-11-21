@@ -33,7 +33,7 @@
                                 <td>{!! $d->category->name !!}</td>
                                 <td><img src='{!! $d['thumb'] !!}' style='width:45px;height:45px;'/></td>
                                 <td>{!! $d['click'] !!}</td>
-                                <td>{!! $d['istop']?"是":"否" !!}</td>
+                                <td>{!! $d['istop']=="1"?"是":"否" !!}</td>
                                 <td>{!! $d['created_at'] !!}</td>
                                 <td>{!! $d['updated_at'] !!}</td>
                                 <td class="text-right">

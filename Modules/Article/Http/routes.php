@@ -17,6 +17,7 @@ Route::group([
   'namespace'  => "Modules\Article\Http\Controllers",
 ], function () {
     Route::get('lists/{category}.html','HomeController@lists');
+    Route::get('content/{content}.html','HomeController@content');
 });
 Route::group([
   'middleware' => ['web', 'auth:admin'],

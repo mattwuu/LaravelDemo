@@ -9,6 +9,7 @@
 namespace Modules\Admin\Services;
 
 use Blade;
+use Modules\Article\Entities\Content;
 
 class TagService
 {
@@ -17,6 +18,41 @@ class TagService
     {
         $this->slide();
         $this->category();
+        $this->lists();
+    }
+
+    // 文章
+    public function lists()
+    {
+        Blade::directive('list', function ($expression) {
+            $expression
+              = $expression ?: '[]';
+            $php
+              = <<<php
+<?php
+    \$params = $expression;
+    \$db = \Modules\Article\Entities\Content::where('id', '>', 0);
+    if(isset(\$params['cid'])){
+        \$db->whereIn('category_id', \$params['cid']);
+    };
+    if(isset(\$params['istop'])){
+        \$db->where('istop', 1);
+    };
+    if(isset(\$params['ishot'])){
+        \$db->orderBy('click', 'desc');
+    };
+    if(isset(\$params['limit'])){
+        \$db->limit(\$params['limit']);
+    };
+    foreach(\$db->get() as \$field):
+    \$field['url'] = '/article/content/'.\$field['id'].'.html';
+?>
+php;
+            return $php;
+        });
+        Blade::directive('endList', function () {
+            return "<?php endforeach;?>";
+        });
     }
 
     // 栏目标签

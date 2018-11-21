@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\View\FileViewFinder;
 use Modules\Article\Entities\Category;
+use Modules\Article\Entities\Content;
 use View;
 use App;
 
@@ -34,8 +35,8 @@ class HomeController extends Controller
         dd($category->toArray());
     }
 
-    public function content()
+    public function content(Content $content)
     {
-        
+        dd($content->toArray());
     }
 }
