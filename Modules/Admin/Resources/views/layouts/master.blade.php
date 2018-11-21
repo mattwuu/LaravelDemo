@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand fixed-top be-top-header">
         <div class="container-fluid">
             <div class="be-navbar-header">
-                <a href="#" class="navbar-brand">
+                <a href="/" class="navbar-brand" target="_blank">
                 </a>
             </div>
             <div class="be-right-navbar" style="width: auto;order:2;">
